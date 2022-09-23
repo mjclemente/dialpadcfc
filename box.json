@@ -1,15 +1,17 @@
 {
   "author": "Matthew Clemente <mjclemente@gmail.com>",
-  "bugs": "",
+  "location": "mjclemente/apifycfc#v0.0.1",
+  "version": "0.0.1",
+  "bugs": "https://github.com/mjclemente/dialpadcfc/issues",
   "changelog": "",
   "contributors": [],
   "dependencies": {},
-  "description": "",
+  "description": "A CFML wrapper for the Dialpad API. Interact with the Dialpad call and contact center platform to make calls, send SMS, manage your account, and more.",
   "devDependencies": {
     "testbox": "^4.5.0+5"
   },
-  "documentation": "",
-  "homepage": "",
+  "documentation": "https://github.com/mjclemente/dialpadcfc/blob/main/README.md",
+  "homepage": "https://github.com/mjclemente/dialpadcfc",
   "ignore": ["**/.*", "/test/", "/tests/"],
   "installPaths": {
     "testbox": "testbox/"
@@ -18,17 +20,16 @@
   "keywords": [],
   "license": [
     {
-      "type": "",
-      "URL": ""
+      "type": "MIT",
+      "URL": "https://github.com/mjclemente/dialpadcfc/blob/main/LICENSE"
     }
   ],
-  "location": "ForgeboxStorage",
   "name": "dialpadcfc",
   "private": false,
-  "projectURL": "",
+  "projectURL": "https://github.com/mjclemente/dialpadcfc",
   "repository": {
-    "type": "",
-    "URL": ""
+    "type": "git",
+    "URL": "https://github.com/mjclemente/dialpadcfc"
   },
   "scripts": {},
   "shortDescription": "A CFML wrapper for the Dialpad API. Interact with the Dialpad call and contact center platform to make calls, send SMS, manage your account, and more.",
@@ -53,6 +54,5 @@
     "watchDelay": 500,
     "watchPaths": "**.cfc"
   },
-  "type": "modules",
-  "version": "0.0.0"
+  "type": "modules"
 }
