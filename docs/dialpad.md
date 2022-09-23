@@ -20,6 +20,10 @@ Sends an SMS message to a phone number or to a Dialpad channel on behalf of a us
 
 Creates a call event subscription. The parameter `call_states` declares the states for which call events are sent. You can find a list of call states here: https://developers.dialpad.com/docs/call-events-logging#call-states. If you do not specify any call states, the subscription will receive all call events. The parameter `target_id` can be used to scope the events only to the calls to/from that target. *[Endpoint docs](https://developers.dialpad.com/reference/webhook_call_event_subscriptioncreate)*
 
+#### `deleteCallEventSubscription( required numeric id )`
+
+Deletes a call event subscription by id. *[Endpoint docs](https://developers.dialpad.com/reference/webhook_call_event_subscriptiondelete)*
+
 #### `listCallEventSubscriptions( string cursor, numeric limit, numeric target_id, string target_type )`
 
 Lists all the call event subscriptions of a company or of a target. *[Endpoint docs](https://developers.dialpad.com/reference/webhook_call_event_subscriptionlist)*
@@ -27,6 +31,10 @@ Lists all the call event subscriptions of a company or of a target. *[Endpoint d
 #### `createSMSEventSubscription( string direction="all", boolean enabled, required string webhook_id, numeric target_id, string target_type )`
 
 Creates an SMS event subscription. The parameter `direction` is the SMS direction this event subscription will be triggered for. Can be "all", "inbound", or "outbound". Defaults to "all". The parameter `target_id` can be used to scope the events only to the SMS to/from that target. *[Endpoint docs](https://developers.dialpad.com/reference/webhook_sms_event_subscriptioncreate)*
+
+#### `deleteSMSEventSubscription( required numeric id )`
+
+Deletes an SMS event subscription by id. *[Endpoint docs](https://developers.dialpad.com/reference/webhook_sms_event_subscriptiondelete)*
 
 #### `listSMSEventSubscriptions( string cursor, numeric limit, numeric target_id, string target_type )`
 
