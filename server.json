@@ -1,0 +1,13 @@
+{
+    "app":{
+        "cfengine":"lucee@5"
+    },
+    "web":{
+        "rules":[
+            "path-prefix(/testapi) -> rewrite('/testapi/index.cfm%{RELATIVE_PATH}')"
+        ],
+        "http":{
+            "port":"52558"
+        }
+    }
+}
