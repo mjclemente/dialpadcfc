@@ -115,6 +115,14 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @docs https://developers.dialpad.com/reference/webhook_call_event_subscriptiondelete
+  * @hint Deletes a call event subscription by id.
+  */
+  public struct function deleteCallEventSubscription(required numeric id) {
+    return apiCall("DELETE", "/subscriptions/call/#arguments.id#");
+  }
+
+  /**
   * @docs https://developers.dialpad.com/reference/webhook_call_event_subscriptionlist
   * @hint Lists all the call event subscriptions of a company or of a target.
   */
@@ -143,6 +151,14 @@ component displayname="dialpadcfc" {
   ) {
     var payload = extractNonNullArgs(arguments);
     return apiCall("POST", "/subscriptions/sms", {}, payload);
+  }
+
+  /**
+  * @docs https://developers.dialpad.com/reference/webhook_sms_event_subscriptiondelete
+  * @hint Deletes an SMS event subscription by id.
+  */
+  public struct function deleteSMSEventSubscription(required numeric id) {
+    return apiCall("DELETE", "/subscriptions/sms/#arguments.id#");
   }
 
   /**

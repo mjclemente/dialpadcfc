@@ -88,6 +88,14 @@ component extends="testbox.system.BaseSpec" {
           expect(response.body).toHaveKey("webhook_id");
           expect(response.body.webhook_id).toBe(variables.test_webhook_id);
         });
+        it("requests a call event subscription be deleted", function() {
+          var subscription_id = 1;
+          var result          = variables.dialpad.deleteCallEventSubscription(subscription_id);
+          expect(isValidResponseStructure(result)).toBeTrue();
+          var response = deserializeJSON(result.raw.response);
+          expect(response.method).toBe("DELETE");
+          expect(response.route).toBe("/subscriptions/call/#subscription_id#");
+        });
         it("requests a list of call event subscriptions", function() {
           var result = variables.dialpad.listCallEventSubscriptions();
           expect(isValidResponseStructure(result)).toBeTrue();
@@ -103,6 +111,14 @@ component extends="testbox.system.BaseSpec" {
           expect(response.route).toBe("/subscriptions/sms");
           expect(response.body).toHaveKey("webhook_id");
           expect(response.body.webhook_id).toBe(variables.test_webhook_id);
+        });
+        it("requests an SMS event subscription be deleted", function() {
+          var subscription_id = 1;
+          var result          = variables.dialpad.deleteSMSEventSubscription(subscription_id);
+          expect(isValidResponseStructure(result)).toBeTrue();
+          var response = deserializeJSON(result.raw.response);
+          expect(response.method).toBe("DELETE");
+          expect(response.route).toBe("/subscriptions/sms/#subscription_id#");
         });
         it("requests a list of SMS event subscriptions", function() {
           var result = variables.dialpad.listSMSEventSubscriptions();
