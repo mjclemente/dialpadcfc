@@ -230,29 +230,35 @@ component displayname="dialpadcfc" {
   /**
   * @hint Can be used to decode a webhook payload from Dialpad
   */
-  public struct function decodeWebhook(required string body, string secret = variables.webhookSecret) {
-    if( arguments.body.listLen(".") != 3 ){
+  public struct function decodeWebhook(required any body, string secret = variables.webhookSecret) {
+
+    var payload = arguments.body;
+    if( isBinary( arguments.body ) ){
+      payload = charsetEncode( arguments.body, "utf-8" );
+    }
+
+    if( payload.listLen(".") != 3 ){
       cfthrow(type = "Invalid JWT Payload", message = "Payload must contain 3 segments");
     }
 
-    var header       = arguments.body.listGetAt(1, ".");
+    var header       = payload.listGetAt(1, ".");
     var parsedHeader = parseJwtElement(header);
     // make sure the algorithm is supported
     if( parsedHeader.alg != "HS256" ){
       cfthrow(type = "Invalid JWT Token", message = "Algorithm not supported");
     }
 
-    var payload       = arguments.body.listGetAt(2, ".");
-    var parsedPayload = parseJwtElement(payload);
-    var signature     = arguments.body.listGetAt(3, ".");
-    var input         = header & "." & payload;
+    var message       = payload.listGetAt(2, ".");
+    var parsedMessage = parseJwtElement(message);
+    var signature     = payload.listGetAt(3, ".");
+    var input         = header & "." & message;
 
     // verify the signature
     if( signature != encodeInput(input, arguments.secret) ){
       cfthrow(type = "Invalid JWT Token", message = "Signature does not match");
     }
 
-    return parsedPayload;
+    return parsedMessage;
   }
 
 
