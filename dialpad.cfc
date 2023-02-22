@@ -97,6 +97,26 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @docs https://developers.dialpad.com/reference/contactscreate_with_uid
+  * @hint Creates a new shared contact with uid.
+  * @phones are the contacts phone numbers. The numbers must be in e164 format. The first number in the list is the contact's primary phone.
+  */
+  public struct function createOrUpdateContact(
+    string company_name,
+    array emails,
+    string extension,
+    required string first_name,
+    string job_title,
+    required string last_name,
+    array phones,
+    required string uid,
+    array urls
+  ) {
+    var payload = extractNonNullArgs(arguments);
+    return apiCall("PUT", "/contacts", {}, payload);
+  }
+
+  /**
   * @docs https://developers.dialpad.com/reference/webhook_call_event_subscriptioncreate
   * @hint Creates a call event subscription.
   * @call_states declares the states for which call events are sent. You can find a list of call states here: https://developers.dialpad.com/docs/call-events-logging#call-states. If you do not specify any call states, the subscription will receive all call events.

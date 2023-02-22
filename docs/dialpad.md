@@ -16,6 +16,10 @@ Lists all the offices that are accessible using your api key. *[Endpoint docs](h
 
 Sends an SMS message to a phone number or to a Dialpad channel on behalf of a user. The parameter `sender_group_type` is sender group's type (i.e. office, department, or callcenter). *[Endpoint docs](https://developers.dialpad.com/reference/smssend)*
 
+#### `createOrUpdateContact( string company_name, array emails, string extension, required string first_name, string job_title, required string last_name, array phones, required string uid, array urls )`
+
+Creates a new shared contact with uid. The parameter `phones` are the contacts phone numbers. The numbers must be in e164 format. The first number in the list is the contact's primary phone. *[Endpoint docs](https://developers.dialpad.com/reference/contactscreate_with_uid)*
+
 #### `createCallEventSubscription( array call_states=["all"], boolean enabled, required string webhook_id, boolean group_calls_only, numeric target_id, string target_type )`
 
 Creates a call event subscription. The parameter `call_states` declares the states for which call events are sent. You can find a list of call states here: https://developers.dialpad.com/docs/call-events-logging#call-states. If you do not specify any call states, the subscription will receive all call events. The parameter `target_id` can be used to scope the events only to the calls to/from that target. *[Endpoint docs](https://developers.dialpad.com/reference/webhook_call_event_subscriptioncreate)*
