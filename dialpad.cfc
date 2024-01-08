@@ -318,10 +318,9 @@ component displayname="dialpadcfc" {
   * @hint Can be used to decode a webhook payload from Dialpad
   */
   public struct function decodeWebhook(required any body, string secret = variables.webhookSecret) {
-
     var payload = arguments.body;
-    if( isBinary( arguments.body ) ){
-      payload = charsetEncode( arguments.body, "utf-8" );
+    if( isBinary(arguments.body) ){
+      payload = charsetEncode(arguments.body, "utf-8");
     }
 
     if( payload.listLen(".") != 3 ){
