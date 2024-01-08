@@ -99,6 +99,35 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @docs https://developers.dialpad.com/reference/callcentersoperatorsget
+  * @hint Lists all the operators for a call center.
+  */
+  public struct function listCallCenterOperators(required numeric id) {
+    return apiCall("GET", "/callcenters/#arguments.id#/operators");
+  }
+
+  /**
+  * @docs https://developers.dialpad.com/reference/callcentersoperatorsgetdutystatus
+  * @hint Gets the duty status for a call center operator.
+  */
+  public struct function getCallCenterOperatorDutyStatus(required numeric id) {
+    return apiCall("GET", "/callcenters/operators/#arguments.id#/dutystatus");
+  }
+
+  /**
+  * @docs https://developers.dialpad.com/reference/callcentersoperatorsdutystatus
+  * @hint Updates the duty status for a call center operator.
+  */
+  public struct function updateCallCenterOperatorDutyStatus(
+    required numeric id,
+    string duty_status_reason,
+    required boolean on_duty
+  ) {
+    var params = extractNonNullArgs(arguments);
+    return apiCall("PATCH", "/callcenters/operators/#arguments.id#/dutystatus", {}, params);
+  }
+
+  /**
   * @docs https://developers.dialpad.com/reference/officeslist
   * @hint Lists all the offices that are accessible using your api key.
   */
