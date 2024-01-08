@@ -55,6 +55,36 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @docs https://developers.dialpad.com/reference/userslist
+  * @hint Lists company users, optionally filtering by email.
+  */
+  public struct function listUsers(
+    string cursor,
+    string state,
+    boolean company_admin,
+    numeric limit,
+    string email,
+    string number
+  ) {
+    var params = extractNonNullArgs(arguments);
+    return apiCall("GET", "/users", params);
+  }
+
+  /**
+  * @docs https://developers.dialpad.com/reference/userstoggle_dnd
+  * @hint Toggle DND status on or off for the given user
+  */
+  public struct function toggleUserDND(
+    required numeric id,
+    required boolean do_not_disturb,
+    numeric group_id,
+    string group_type
+  ) {
+    var params = extractNonNullArgs(arguments);
+    return apiCall("PATCH", "/users/#arguments.id#/togglednd", {}, params);
+  }
+
+  /**
   * @docs https://developers.dialpad.com/reference/callcenterslistall
   * @hint Lists all the call centers for the company.
   */
