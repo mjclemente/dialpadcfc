@@ -137,6 +137,14 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @docs https://developers.dialpad.com/reference/officesoffdutystatusesget
+  * @hint Lists off-duty status values.
+  */
+  public struct function listOfficeOffDutyStatuses(required numeric id) {
+    return apiCall("GET", "/offices/#arguments.id#/offdutystatuses");
+  }
+
+  /**
   * @docs https://developers.dialpad.com/reference/smssend
   * @hint Sends an SMS message to a phone number or to a Dialpad channel on behalf of a user.
   * @sender_group_type is sender group's type (i.e. office, department, or callcenter).
