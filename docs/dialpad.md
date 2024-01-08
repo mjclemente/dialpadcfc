@@ -4,13 +4,33 @@
 
 Gets company information. *[Endpoint docs](https://developers.dialpad.com/reference/companyget)*
 
+#### `toggleUserDND( required numeric id, required boolean do_not_disturb, numeric group_id, string group_type )`
+
+Toggle DND status on or off for the given user. *[Endpoint docs](https://developers.dialpad.com/reference/userstoggle_dnd)*
+
 #### `listCallCenters( string cursor, numeric office_id, string name_search, numeric limit )`
 
 Lists all the call centers for the company. *[Endpoint docs](https://developers.dialpad.com/reference/callcenterslistall)*
 
+#### `listCallCenterOperators( required numeric id )`
+
+Lists all the operators for a call center. *[Endpoint docs](https://developers.dialpad.com/reference/callcentersoperatorsget)*
+
+#### `getCallCenterOperatorDutyStatus( required numeric id )`
+
+Gets the duty status for a call center operator. *[Endpoint docs](https://developers.dialpad.com/reference/callcentersoperatorsgetdutystatus)*
+
+#### `updateCallCenterOperatorDutyStatus( required numeric id, string duty_status_reason, required boolean on_duty )`
+
+Updates the duty status for a call center operator. *[Endpoint docs](https://developers.dialpad.com/reference/callcentersoperatorsdutystatus)*
+
 #### `listOffices( string cursor, numeric limit )`
 
 Lists all the offices that are accessible using your api key. *[Endpoint docs](https://developers.dialpad.com/reference/officeslist)*
+
+#### `listOfficeOffDutyStatuses( required numeric id )`
+
+Lists off-duty status values. *[Endpoint docs](https://developers.dialpad.com/reference/officesoffdutystatusesget)*
 
 #### `sendSMS( string channel_hashtag, boolean infer_country_code, string media, numeric sender_group_id, string sender_group_type, string text, array to_numbers, required numeric user_id )`
 
@@ -64,7 +84,7 @@ Lists all the webhooks that are associated with the company. *[Endpoint docs](ht
 
 Deletes a webhook by id. *[Endpoint docs](https://developers.dialpad.com/reference/webhooksdelete)*
 
-#### `decodeWebhook( required string body, string secret="[runtime expression]" )`
+#### `decodeWebhook( required any body, string secret="[runtime expression]" )`
 
 Can be used to decode a webhook payload from Dialpad.
 
