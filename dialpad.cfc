@@ -5,7 +5,7 @@
 */
 component displayname="dialpadcfc" {
 
-  variables._dialpadcfc_version = "0.0.5";
+  variables._dialpadcfc_version = "0.0.6";
 
   public any function init(
     string apiKey        = "",
