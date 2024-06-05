@@ -107,6 +107,24 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @docs https://developers.dialpad.com/reference/callcentersoperatorsdelete
+  * @hint Removes an operator from a call center.
+  */
+  public struct function removeCallCenterOperator(required numeric id, required numeric user_id ) {
+    var payload = { "user_id": arguments.user_id };
+    return apiCall("DELETE", "/callcenters/#arguments.id#/operators", {}, payload);
+  }
+
+  /**
+  * @docs https://developers.dialpad.com/reference/callcentersoperatorspost
+  * @hint Adds an operator to a call center. Not all params are supported yet.
+  */
+  public struct function addCallCenterOperator(required numeric id, required numeric user_id ) {
+    var payload = { "user_id": arguments.user_id };
+    return apiCall("POST", "/callcenters/#arguments.id#/operators", {}, payload);
+  }
+
+  /**
   * @docs https://developers.dialpad.com/reference/callcentersoperatorsgetdutystatus
   * @hint Gets the duty status for a call center operator.
   */

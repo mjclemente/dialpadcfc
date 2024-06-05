@@ -16,6 +16,14 @@ Lists all the call centers for the company. *[Endpoint docs](https://developers.
 
 Lists all the operators for a call center. *[Endpoint docs](https://developers.dialpad.com/reference/callcentersoperatorsget)*
 
+#### `removeCallCenterOperator( required numeric id, required numeric user_id )`
+
+Removes an operator from a call center. *[Endpoint docs](https://developers.dialpad.com/reference/callcentersoperatorsdelete)*
+
+#### `addCallCenterOperator( required numeric id, required numeric user_id )`
+
+Adds an operator to a call center. Not all params are supported yet. *[Endpoint docs](https://developers.dialpad.com/reference/callcentersoperatorspost)*
+
 #### `getCallCenterOperatorDutyStatus( required numeric id )`
 
 Gets the duty status for a call center operator. *[Endpoint docs](https://developers.dialpad.com/reference/callcentersoperatorsgetdutystatus)*
