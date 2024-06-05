@@ -281,6 +281,14 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @docs https://developers.dialpad.com/reference/usersget
+  * @hint Gets a user by id.
+  */
+  public struct function getUser( required any id ) {
+    return apiCall("GET", "/users/#arguments.id#");
+  }
+
+  /**
   * @docs https://developers.dialpad.com/reference/userslist
   * @hint Lists company users, optionally filtering by email.
   * @state filters results by the specified user state (e.g. active, suspended, deleted)
@@ -363,6 +371,13 @@ component displayname="dialpadcfc" {
     }
 
     return parsedMessage;
+  }
+
+  /**
+  * @hint Returns the webhookSecret the component is using as its default.
+  */
+  public string function getWebhookSecret() {
+    return variables.webhookSecret;
   }
 
 

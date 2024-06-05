@@ -72,6 +72,10 @@ Deletes an SMS event subscription by id. *[Endpoint docs](https://developers.dia
 
 Lists all the SMS event subscriptions of a company or of a target. *[Endpoint docs](https://developers.dialpad.com/reference/webhook_sms_event_subscriptionlist)*
 
+#### `getUser( required any id )`
+
+Gets a user by id. *[Endpoint docs](https://developers.dialpad.com/reference/usersget)*
+
 #### `listUsers( string cursor, string state, numeric limit, string email )`
 
 Lists company users, optionally filtering by email. The parameter `state` filters results by the specified user state (e.g. active, suspended, deleted). *[Endpoint docs](https://developers.dialpad.com/reference/userslist)*
@@ -95,4 +99,8 @@ Deletes a webhook by id. *[Endpoint docs](https://developers.dialpad.com/referen
 #### `decodeWebhook( required any body, string secret="[runtime expression]" )`
 
 Can be used to decode a webhook payload from Dialpad.
+
+#### `getWebhookSecret()`
+
+Returns the webhookSecret the component is using as its default.
 
