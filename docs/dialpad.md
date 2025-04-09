@@ -72,6 +72,10 @@ Deletes an SMS event subscription by id. *[Endpoint docs](https://developers.dia
 
 Lists all the SMS event subscriptions of a company or of a target. *[Endpoint docs](https://developers.dialpad.com/reference/webhook_sms_event_subscriptionlist)*
 
+#### `getTranscript( required any call_id )`
+
+Gets a transcript by call_id. *[Endpoint docs](https://developers.dialpad.com/reference/transcriptsget)*
+
 #### `getUser( required any id )`
 
 Gets a user by id. *[Endpoint docs](https://developers.dialpad.com/reference/usersget)*
@@ -99,6 +103,10 @@ Deletes a webhook by id. *[Endpoint docs](https://developers.dialpad.com/referen
 #### `decodeWebhook( required any body, string secret="[runtime expression]" )`
 
 Can be used to decode a webhook payload from Dialpad.
+
+#### `encodeWebhook( required any payload, string secret="[runtime expression]" )`
+
+Can be used to encode a webhook payload back into the format received from Dialpad.
 
 #### `getWebhookSecret()`
 

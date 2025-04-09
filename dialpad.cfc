@@ -281,6 +281,14 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @docs https://developers.dialpad.com/reference/transcriptsget
+  * @hint Gets a transcript by call_id.
+  */
+  public struct function getTranscript( required numeric call_id ) {
+    return apiCall("GET", "/transcripts/#arguments.call_id#");
+  }
+
+  /**
   * @docs https://developers.dialpad.com/reference/usersget
   * @hint Gets a user by id.
   */
@@ -371,6 +379,21 @@ component displayname="dialpadcfc" {
     }
 
     return parsedMessage;
+  }
+
+  /**
+  * @hint Can be used to encode a webhook payload back into the format received from Dialpad
+  */
+  public string function encodeWebhook(required any payload, string secret = variables.webhookSecret) {
+    var header = {
+      "alg": "HS256",
+      "typ": "JWT"
+    };
+    var encodedHeader = urlSafeBase64Encode(serializeJSON(header));
+    var encodedPayload = urlSafeBase64Encode(serializeJSON(arguments.payload));
+    var input = encodedHeader & "." & encodedPayload;
+    var signature = encodeInput(input, arguments.secret);
+    return input & "." & signature;
   }
 
   /**
