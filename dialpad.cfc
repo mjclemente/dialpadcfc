@@ -281,6 +281,14 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @docs https://developers.dialpad.com/reference/transcriptsget
+  * @hint Gets a transcript by call_id.
+  */
+  public struct function getTranscript( required numeric call_id ) {
+    return apiCall("GET", "/transcripts/#arguments.call_id#");
+  }
+
+  /**
   * @docs https://developers.dialpad.com/reference/usersget
   * @hint Gets a user by id.
   */
