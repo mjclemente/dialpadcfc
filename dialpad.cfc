@@ -382,6 +382,21 @@ component displayname="dialpadcfc" {
   }
 
   /**
+  * @hint Can be used to encode a webhook payload back into the format received from Dialpad
+  */
+  public string function encodeWebhook(required any payload, string secret = variables.webhookSecret) {
+    var header = {
+      "alg": "HS256",
+      "typ": "JWT"
+    };
+    var encodedHeader = urlSafeBase64Encode(serializeJSON(header));
+    var encodedPayload = urlSafeBase64Encode(serializeJSON(arguments.payload));
+    var input = encodedHeader & "." & encodedPayload;
+    var signature = encodeInput(input, arguments.secret);
+    return input & "." & signature;
+  }
+
+  /**
   * @hint Returns the webhookSecret the component is using as its default.
   */
   public string function getWebhookSecret() {
